@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Rental shop = new Rental("Scooter Shop", 50);
-        while(true) {
+        loop: while(true) {
             System.out.println("Select input task number. 1 - Show number of available scooters, 2 - Rent Scooter, 3 - Return Scooter, 4 - Close the Store ");
             Scanner input = new Scanner(System.in);
             int task = input.nextInt();
@@ -20,18 +20,11 @@ public class Main {
                     System.out.println("Enter your name");
                     String name = input.nextLine();
 
-                    switch(time) {
-                        case 1:
-                            shop.rentHourly(name, count);
-                            break;
-                        case 2:
-                            shop.rentDaily(name, count);
-                            break;
-                        case 3:
-                            shop.rentWeekly(name, count);
-                            break;
-                        default:
-                            System.out.println("Sorry, something went wrong");
+                    switch (time) {
+                        case 1 -> shop.rentHourly(name, count);
+                        case 2 -> shop.rentDaily(name, count);
+                        case 3 -> shop.rentWeekly(name, count);
+                        default -> System.out.println("Sorry, something went wrong");
                     }
                     break;
                 case 3:
@@ -46,7 +39,7 @@ public class Main {
 
                 default:
                     System.out.println("Error");
-                    break;
+                    break loop;
             }
         }
 
